@@ -1,14 +1,23 @@
 import chainlit as cl
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI
 
-# Add proper CORS settings to allow frontend access with credentials
-cl.app.add_middleware(
+allowed_ports = [3000, 5173]
+allow_origins = [f"http://localhost:{port}" for port in allowed_ports] + \
+                [f"http://127.0.0.1:{port}" for port in allowed_ports]
+
+app = FastAPI()
+
+app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:3000", "http://localhost:3000"],  # 👈 Your frontend origins
+    allow_origins=allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Add proper CORS settings to allow frontend access with credentials
+
 
 import google.generativeai as genai
 from typing import Optional, Dict, List
