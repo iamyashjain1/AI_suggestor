@@ -317,7 +317,7 @@ def create_comparison_followup_buttons():
 
 # Session Management
 class ChatSession:
-    def init(self):
+    def __init__(self):
         self.mode = None
         self.comparison_product1 = None
         self.last_product = None
@@ -620,13 +620,13 @@ async def process_followup_query(query_type: str, product_name: str):
         else:
             raise ValueError(f"Unknown query type: {query_type}")
         response = model.generate_content(prompt)
-        await msg.set_content(response.text)
+        await msg.update(response.text)
         await cl.Message(
             content="Need more help? 👇",
             actions=create_main_action_buttons()
         ).send()
     except Exception as e:
-        await msg.set_content("😅 Sorry, I couldn't get that information right now. Please try again!")
+        await msg.update("😅 Sorry, I couldn't process that request. Please try again with a different product or be more specific!")
         await cl.Message(
             content="Let's try something else! 👇",
             actions=create_main_action_buttons()
@@ -651,7 +651,9 @@ async def process_product_query(user_input: str):
         elif mode == "compare":
             if not session.comparison_product1:
                 session.comparison_product1 = user_input
-                await msg.set_content(f"✅ First product: {user_input}\n\n📝 Now enter the second product to compare:")
+                msg.content = f"✅ First product: {user_input}\n\n📝 Now enter the second product to compare:"
+                await msg.update()
+
                 return
             else:
                 prompt = generate_comparison_prompt(session.comparison_product1, user_input)
@@ -664,7 +666,9 @@ async def process_product_query(user_input: str):
         response = model.generate_content(prompt)
         
         # Update with final response
-        await msg.set_content(response.text)
+        msg.content = response.text.strip()
+        await msg.update()
+
         
         # Show appropriate follow-up buttons
         if mode == "describe":
@@ -693,7 +697,8 @@ async def process_product_query(user_input: str):
         ).send()
         
     except Exception as e:
-        await msg.set_content("😅 Sorry, I couldn't process that request. Please try again with a different product or be more specific!")
+        msg.content= "😅 Sorry, I couldn't process that request. Please try again with a different product or be more specific!"
+        await msg.update()
         session.reset_mode()
         await cl.Message(
             content="Let's try again! 👇",
