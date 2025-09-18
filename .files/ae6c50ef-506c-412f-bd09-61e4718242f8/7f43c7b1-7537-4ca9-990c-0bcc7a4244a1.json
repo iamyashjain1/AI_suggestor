@@ -1,0 +1,141 @@
+{
+    "reportPeriod": {
+        "startDate": "2024-07-01",
+        "endDate": "2024-07-31"
+    },
+    "workshopMetrics": {
+        "timeMetrics": {
+            "estimatedTime": "4 hours",
+            "actualTime": "4 hours 10 minutes",
+            "onTimeCompletionRate": "90%",
+            "averageTaskDuration": "4.2 hours"
+        },
+        "costMetrics": {
+            "estimatedCost": 650,
+            "actualCost": 500,
+            "costOverrunRate": "15%",
+            "costEfficiency": "125 units/USD"
+        },
+        "qualityMetrics": {
+            "reworkRate": "5%",
+            "defectRate": "2%",
+            "customerSatisfaction": "4.5/5"
+        },
+        "productivityMetrics": {
+            "taskCompletionRate": "20 tasks/month",
+            "workOutput": "100 units",
+            "employeeProductivity": "5 tasks/employee"
+        },
+        "resourceUtilizationMetrics": {
+            "equipmentUtilization": "80%",
+            "laborUtilization": "75%"
+        },
+        "safetyMetrics": {
+            "incidentRate": "1 incident/month",
+            "complianceRate": "100%"
+        },
+        "financialMetrics": {
+            "profitability": "₹50000",
+            "returnOnInvestment": "20%"
+        },
+        "operationalMetrics": {
+            "downtime": "5 hours/month",
+            "inventoryTurnover": "3 times/month",
+            "downtimeImpact": "High",
+            "publicDisruptionDuration": "10 days"
+        },
+        "employeeMetrics": {
+            "employeeAttendance": "95%",
+            "trainingHours": "10 hours/employee",
+            "employeeSatisfaction": "4/5",
+            "workersAtStart": 10,
+            "workersAtEnd": 9
+        },
+        "environmentalMetrics": {
+            "wasteReduction": "80%",
+            "energyConsumption": "2000 kWh"
+        },
+        "repurchasingMetrics": {
+            "resourceRepurchasingRate": "20%"
+        }
+    },
+    "workshopSchedule": [
+        {
+            "taskId": "T001",
+            "taskName": "Vehicle Servicing",
+            "startDate": "2024-07-01",
+            "endDate": "2024-07-01",
+            "estimatedCost": 650,
+            "actualCost": 500,
+            "estimatedTime": "4 hours",
+            "actualTime": "4 hours 10 minutes",
+            "expenseCategories": {
+                "workers": {
+                    "estimatedCost": 400,
+                    "actualCost": 350
+                },
+                "rawMaterial": {
+                    "estimatedCost": 250,
+                    "actualCost": 150
+                }
+            },
+            "steps": [
+                {
+                    "stepId": "S001",
+                    "stepName": "Tire Replacement",
+                    "employeeId": "E12345",
+                    "employeeName": "John Doe",
+                    "scheduledStartTime": "09:00",
+                    "scheduledEndTime": "10:00",
+                    "actualStartTime": "09:05",
+                    "actualEndTime": "10:10",
+                    "status": "Completed"
+                },
+                {
+                    "stepId": "S002",
+                    "stepName": "Brake Inspection",
+                    "employeeId": "E67890",
+                    "employeeName": "Jane Smith",
+                    "scheduledStartTime": "10:00",
+                    "scheduledEndTime": "11:00",
+                    "actualStartTime": "10:00",
+                    "actualEndTime": "11:00",
+                    "status": "Completed"
+                }
+            ]
+        },
+        {
+            "taskId": "T002",
+            "taskName": "Street Lamp Installation",
+            "startDate": "2024-07-02",
+            "endDate": "2024-07-02",
+            "estimatedCost": 1100,
+            "actualCost": 800,
+            "estimatedTime": "6 hours",
+            "actualTime": "6 hours",
+            "expenseCategories": {
+                "workers": {
+                    "estimatedCost": 500,
+                    "actualCost": 400
+                },
+                "rawMaterial": {
+                    "estimatedCost": 600,
+                    "actualCost": 400
+                }
+            },
+            "steps": [
+                {
+                    "stepId": "S003",
+                    "stepName": "Fill with Gravel",
+                    "employeeId": "E23456",
+                    "employeeName": "Alice Brown",
+                    "scheduledStartTime": "09:00",
+                    "scheduledEndTime": "10:00",
+                    "actualStartTime": "09:00",
+                    "actualEndTime": "10:00",
+                    "status": "Completed"
+                }
+            ]
+        }
+    ]
+}
